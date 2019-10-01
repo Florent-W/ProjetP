@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSaisiesBoutons));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.combat_btn = new System.Windows.Forms.Button();
             this.label_choix_pokemon_depart = new System.Windows.Forms.Label();
-            this.cb_choix_pokemon_depart = new System.Windows.Forms.ComboBox();
-            this.bt_choixPokemon = new System.Windows.Forms.Button();
             this.btn_attraper = new System.Windows.Forms.Button();
             this.Age = new System.Windows.Forms.Label();
             this.buttonAfficher = new System.Windows.Forms.Button();
@@ -120,6 +119,31 @@
             this.label_sexe_pokemon_combat_adversaire = new System.Windows.Forms.Label();
             this.cb_choix_pokeball = new System.Windows.Forms.ComboBox();
             this.btn_choix_pokeball = new System.Windows.Forms.Button();
+            this.pictureBoxStatutPokemonCombatJoueur = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStatutPokemonCombatAdversaire = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBasePokemonAdversaire = new System.Windows.Forms.PictureBox();
+            this.btn_pokeball_premier_starter = new System.Windows.Forms.Button();
+            this.pictureBoxPokeballPremierStarter = new System.Windows.Forms.PictureBox();
+            this.btn_pokeball_deuxieme_starter = new System.Windows.Forms.Button();
+            this.pictureBoxPokeballDeuxiemeStarter = new System.Windows.Forms.PictureBox();
+            this.btn_pokeball_troisieme_starter = new System.Windows.Forms.Button();
+            this.pictureBoxPokeballTroisiemeStarter = new System.Windows.Forms.PictureBox();
+            this.btn_choix_garçon2 = new System.Windows.Forms.Button();
+            this.btn_choix_fille2 = new System.Windows.Forms.Button();
+            this.pictureBoxBasePokemonJoueur = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMenuCombat = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIconePokemon = new System.Windows.Forms.PictureBox();
+            this.btn_pc = new System.Windows.Forms.Button();
+            this.timerAnimationAdversaireKo = new System.Windows.Forms.Timer(this.components);
+            this.timerAnimationKo = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ouvrirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label_nom_attaque_une = new System.Windows.Forms.Label();
+            this.label_nom_attaque_deux = new System.Windows.Forms.Label();
+            this.label_nom_attaque_trois = new System.Windows.Forms.Label();
+            this.label_nom_attaque_quatre = new System.Windows.Forms.Label();
             this.groupBoxConnexion.SuspendLayout();
             this.groupBoxPokemon.SuspendLayout();
             this.panel_choix_pokemon_selection.SuspendLayout();
@@ -134,7 +158,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarreViePokemonJoueur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarreViePokemonAdversaire)).BeginInit();
             this.panel_choix_objets_selection.SuspendLayout();
-            this.panel_choix_attaque_selection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque2)).BeginInit();
@@ -142,6 +165,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarreExperiencePokemonJoueur)).BeginInit();
             this.groupBoxNiveauSuperieurStatistiques.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExemple)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStatutPokemonCombatJoueur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStatutPokemonCombatAdversaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasePokemonAdversaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballPremierStarter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballDeuxiemeStarter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballTroisiemeStarter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasePokemonJoueur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuCombat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconePokemon)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -152,7 +185,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(695, 203);
+            this.textBox1.Size = new System.Drawing.Size(695, 177);
             this.textBox1.TabIndex = 7;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
             // 
@@ -171,36 +204,13 @@
             // label_choix_pokemon_depart
             // 
             this.label_choix_pokemon_depart.AutoSize = true;
-            this.label_choix_pokemon_depart.Location = new System.Drawing.Point(23, 581);
+            this.label_choix_pokemon_depart.Location = new System.Drawing.Point(120, 563);
             this.label_choix_pokemon_depart.Name = "label_choix_pokemon_depart";
-            this.label_choix_pokemon_depart.Size = new System.Drawing.Size(100, 13);
+            this.label_choix_pokemon_depart.Size = new System.Drawing.Size(106, 13);
             this.label_choix_pokemon_depart.TabIndex = 10;
-            this.label_choix_pokemon_depart.Text = "Pokémon de départ";
+            this.label_choix_pokemon_depart.Text = "Pokémon de départ :";
             this.label_choix_pokemon_depart.Visible = false;
             this.label_choix_pokemon_depart.Click += new System.EventHandler(this.label1_Click_2);
-            // 
-            // cb_choix_pokemon_depart
-            // 
-            this.cb_choix_pokemon_depart.BackColor = System.Drawing.SystemColors.Window;
-            this.cb_choix_pokemon_depart.FormattingEnabled = true;
-            this.cb_choix_pokemon_depart.Location = new System.Drawing.Point(141, 578);
-            this.cb_choix_pokemon_depart.Name = "cb_choix_pokemon_depart";
-            this.cb_choix_pokemon_depart.Size = new System.Drawing.Size(121, 21);
-            this.cb_choix_pokemon_depart.TabIndex = 11;
-            this.cb_choix_pokemon_depart.Visible = false;
-            this.cb_choix_pokemon_depart.SelectedIndexChanged += new System.EventHandler(this.cb_choix_pokemon_depart_SelectedIndexChanged);
-            this.cb_choix_pokemon_depart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_choix_pokemon_depart_KeyDown);
-            // 
-            // bt_choixPokemon
-            // 
-            this.bt_choixPokemon.Location = new System.Drawing.Point(295, 578);
-            this.bt_choixPokemon.Name = "bt_choixPokemon";
-            this.bt_choixPokemon.Size = new System.Drawing.Size(75, 23);
-            this.bt_choixPokemon.TabIndex = 12;
-            this.bt_choixPokemon.Text = "Valider";
-            this.bt_choixPokemon.UseVisualStyleBackColor = true;
-            this.bt_choixPokemon.Visible = false;
-            this.bt_choixPokemon.Click += new System.EventHandler(this.bt_choixPokemon_Click);
             // 
             // btn_attraper
             // 
@@ -614,15 +624,19 @@
             // 
             // btn_soigner
             // 
+            this.btn_soigner.BackColor = System.Drawing.Color.Transparent;
+            this.btn_soigner.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_soigner.BackgroundImage")));
             this.btn_soigner.Enabled = false;
-            this.btn_soigner.Location = new System.Drawing.Point(1547, 167);
+            this.btn_soigner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_soigner.Location = new System.Drawing.Point(1252, 729);
             this.btn_soigner.Name = "btn_soigner";
-            this.btn_soigner.Size = new System.Drawing.Size(75, 23);
+            this.btn_soigner.Size = new System.Drawing.Size(76, 38);
             this.btn_soigner.TabIndex = 15;
-            this.btn_soigner.Text = "Soin";
-            this.btn_soigner.UseVisualStyleBackColor = true;
+            this.btn_soigner.UseVisualStyleBackColor = false;
             this.btn_soigner.Visible = false;
             this.btn_soigner.Click += new System.EventHandler(this.btn_Soigner_Click);
+            this.btn_soigner.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_soigner_KeyDown);
+            this.btn_soigner.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_soigner_PreviewKeyDown);
             // 
             // label_potion
             // 
@@ -678,7 +692,7 @@
             // 
             this.pictureBoxPokemonCombatAdversaire.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPokemonCombatAdversaire.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxPokemonCombatAdversaire.Location = new System.Drawing.Point(1039, 300);
+            this.pictureBoxPokemonCombatAdversaire.Location = new System.Drawing.Point(1030, 288);
             this.pictureBoxPokemonCombatAdversaire.Name = "pictureBoxPokemonCombatAdversaire";
             this.pictureBoxPokemonCombatAdversaire.Size = new System.Drawing.Size(89, 77);
             this.pictureBoxPokemonCombatAdversaire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -688,7 +702,7 @@
             // label_nom_pokemon_combat_joueur
             // 
             this.label_nom_pokemon_combat_joueur.AutoSize = true;
-            this.label_nom_pokemon_combat_joueur.Location = new System.Drawing.Point(830, 579);
+            this.label_nom_pokemon_combat_joueur.Location = new System.Drawing.Point(830, 627);
             this.label_nom_pokemon_combat_joueur.Name = "label_nom_pokemon_combat_joueur";
             this.label_nom_pokemon_combat_joueur.Size = new System.Drawing.Size(52, 13);
             this.label_nom_pokemon_combat_joueur.TabIndex = 33;
@@ -698,7 +712,7 @@
             // label_pv_pokemon_combat_joueur
             // 
             this.label_pv_pokemon_combat_joueur.AutoSize = true;
-            this.label_pv_pokemon_combat_joueur.Location = new System.Drawing.Point(913, 579);
+            this.label_pv_pokemon_combat_joueur.Location = new System.Drawing.Point(913, 627);
             this.label_pv_pokemon_combat_joueur.Name = "label_pv_pokemon_combat_joueur";
             this.label_pv_pokemon_combat_joueur.Size = new System.Drawing.Size(69, 13);
             this.label_pv_pokemon_combat_joueur.TabIndex = 34;
@@ -708,7 +722,7 @@
             // label_nom_pokemon_combat_adversaire
             // 
             this.label_nom_pokemon_combat_adversaire.AutoSize = true;
-            this.label_nom_pokemon_combat_adversaire.Location = new System.Drawing.Point(1010, 256);
+            this.label_nom_pokemon_combat_adversaire.Location = new System.Drawing.Point(1010, 234);
             this.label_nom_pokemon_combat_adversaire.Name = "label_nom_pokemon_combat_adversaire";
             this.label_nom_pokemon_combat_adversaire.Size = new System.Drawing.Size(52, 13);
             this.label_nom_pokemon_combat_adversaire.TabIndex = 35;
@@ -718,7 +732,7 @@
             // label_pv_pokemon_combat_adversaire
             // 
             this.label_pv_pokemon_combat_adversaire.AutoSize = true;
-            this.label_pv_pokemon_combat_adversaire.Location = new System.Drawing.Point(1093, 256);
+            this.label_pv_pokemon_combat_adversaire.Location = new System.Drawing.Point(1093, 234);
             this.label_pv_pokemon_combat_adversaire.Name = "label_pv_pokemon_combat_adversaire";
             this.label_pv_pokemon_combat_adversaire.Size = new System.Drawing.Size(69, 13);
             this.label_pv_pokemon_combat_adversaire.TabIndex = 36;
@@ -727,15 +741,19 @@
             // 
             // btn_attaque1
             // 
+            this.btn_attaque1.BackColor = System.Drawing.Color.Transparent;
+            this.btn_attaque1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_attaque1.BackgroundImage")));
             this.btn_attaque1.Enabled = false;
-            this.btn_attaque1.Location = new System.Drawing.Point(1547, 82);
+            this.btn_attaque1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_attaque1.Location = new System.Drawing.Point(1272, 618);
             this.btn_attaque1.Name = "btn_attaque1";
-            this.btn_attaque1.Size = new System.Drawing.Size(75, 23);
+            this.btn_attaque1.Size = new System.Drawing.Size(214, 86);
             this.btn_attaque1.TabIndex = 12;
-            this.btn_attaque1.Text = "Attaquer";
-            this.btn_attaque1.UseVisualStyleBackColor = true;
+            this.btn_attaque1.UseVisualStyleBackColor = false;
             this.btn_attaque1.Visible = false;
             this.btn_attaque1.Click += new System.EventHandler(this.btn_attaque1_Click);
+            this.btn_attaque1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_attaque1_KeyDown);
+            this.btn_attaque1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_attaque1_PreviewKeyDown);
             // 
             // timerBarrePokemonJoueur
             // 
@@ -743,7 +761,7 @@
             // 
             // pictureBoxBarreViePokemonJoueur
             // 
-            this.pictureBoxBarreViePokemonJoueur.Location = new System.Drawing.Point(851, 555);
+            this.pictureBoxBarreViePokemonJoueur.Location = new System.Drawing.Point(851, 603);
             this.pictureBoxBarreViePokemonJoueur.Name = "pictureBoxBarreViePokemonJoueur";
             this.pictureBoxBarreViePokemonJoueur.Size = new System.Drawing.Size(111, 21);
             this.pictureBoxBarreViePokemonJoueur.TabIndex = 44;
@@ -751,7 +769,7 @@
             // 
             // pictureBoxBarreViePokemonAdversaire
             // 
-            this.pictureBoxBarreViePokemonAdversaire.Location = new System.Drawing.Point(1030, 235);
+            this.pictureBoxBarreViePokemonAdversaire.Location = new System.Drawing.Point(1030, 213);
             this.pictureBoxBarreViePokemonAdversaire.Name = "pictureBoxBarreViePokemonAdversaire";
             this.pictureBoxBarreViePokemonAdversaire.Size = new System.Drawing.Size(111, 21);
             this.pictureBoxBarreViePokemonAdversaire.TabIndex = 45;
@@ -764,15 +782,19 @@
             // 
             // btn_changement_pokemon
             // 
+            this.btn_changement_pokemon.BackColor = System.Drawing.Color.Transparent;
+            this.btn_changement_pokemon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_changement_pokemon.BackgroundImage")));
             this.btn_changement_pokemon.Enabled = false;
-            this.btn_changement_pokemon.Location = new System.Drawing.Point(1547, 217);
+            this.btn_changement_pokemon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_changement_pokemon.Location = new System.Drawing.Point(1429, 729);
             this.btn_changement_pokemon.Name = "btn_changement_pokemon";
-            this.btn_changement_pokemon.Size = new System.Drawing.Size(75, 23);
+            this.btn_changement_pokemon.Size = new System.Drawing.Size(76, 39);
             this.btn_changement_pokemon.TabIndex = 17;
-            this.btn_changement_pokemon.Text = "Pokémon";
-            this.btn_changement_pokemon.UseVisualStyleBackColor = true;
+            this.btn_changement_pokemon.UseVisualStyleBackColor = false;
             this.btn_changement_pokemon.Visible = false;
             this.btn_changement_pokemon.Click += new System.EventHandler(this.button1_Click_3);
+            this.btn_changement_pokemon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_changement_pokemon_KeyDown);
+            this.btn_changement_pokemon.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_changement_pokemon_PreviewKeyDown);
             // 
             // panel_choix_objets_selection
             // 
@@ -799,20 +821,7 @@
             // 
             // panel_choix_attaque_selection
             // 
-            this.panel_choix_attaque_selection.Controls.Add(this.label_pp_attaque_quatre);
-            this.panel_choix_attaque_selection.Controls.Add(this.label_pp_attaque_trois);
-            this.panel_choix_attaque_selection.Controls.Add(this.label_pp_attaque_deux);
-            this.panel_choix_attaque_selection.Controls.Add(this.label_pp_attaque_une);
-            this.panel_choix_attaque_selection.Controls.Add(this.btn_retour_choix_attaque);
-            this.panel_choix_attaque_selection.Controls.Add(this.pictureBoxTypeAttaque4);
-            this.panel_choix_attaque_selection.Controls.Add(this.pictureBoxTypeAttaque3);
-            this.panel_choix_attaque_selection.Controls.Add(this.pictureBoxTypeAttaque2);
-            this.panel_choix_attaque_selection.Controls.Add(this.pictureBoxTypeAttaque1);
-            this.panel_choix_attaque_selection.Controls.Add(this.btn_attaque_une);
-            this.panel_choix_attaque_selection.Controls.Add(this.btn_attaque_deux);
-            this.panel_choix_attaque_selection.Controls.Add(this.btn_attaque_trois);
-            this.panel_choix_attaque_selection.Controls.Add(this.btn_attaque_quatre);
-            this.panel_choix_attaque_selection.Location = new System.Drawing.Point(1244, 430);
+            this.panel_choix_attaque_selection.Location = new System.Drawing.Point(1247, 416);
             this.panel_choix_attaque_selection.Name = "panel_choix_attaque_selection";
             this.panel_choix_attaque_selection.Size = new System.Drawing.Size(263, 160);
             this.panel_choix_attaque_selection.TabIndex = 47;
@@ -820,48 +829,52 @@
             // label_pp_attaque_quatre
             // 
             this.label_pp_attaque_quatre.AutoSize = true;
-            this.label_pp_attaque_quatre.Location = new System.Drawing.Point(202, 99);
+            this.label_pp_attaque_quatre.Location = new System.Drawing.Point(1467, 703);
             this.label_pp_attaque_quatre.Name = "label_pp_attaque_quatre";
             this.label_pp_attaque_quatre.Size = new System.Drawing.Size(21, 13);
             this.label_pp_attaque_quatre.TabIndex = 56;
             this.label_pp_attaque_quatre.Text = "PP";
             this.label_pp_attaque_quatre.Visible = false;
+            this.label_pp_attaque_quatre.Click += new System.EventHandler(this.label_pp_attaque_quatre_Click);
             // 
             // label_pp_attaque_trois
             // 
             this.label_pp_attaque_trois.AutoSize = true;
-            this.label_pp_attaque_trois.Location = new System.Drawing.Point(83, 99);
+            this.label_pp_attaque_trois.Location = new System.Drawing.Point(1348, 703);
             this.label_pp_attaque_trois.Name = "label_pp_attaque_trois";
             this.label_pp_attaque_trois.Size = new System.Drawing.Size(21, 13);
             this.label_pp_attaque_trois.TabIndex = 55;
             this.label_pp_attaque_trois.Text = "PP";
             this.label_pp_attaque_trois.Visible = false;
+            this.label_pp_attaque_trois.Click += new System.EventHandler(this.label_pp_attaque_trois_Click);
             // 
             // label_pp_attaque_deux
             // 
             this.label_pp_attaque_deux.AutoSize = true;
-            this.label_pp_attaque_deux.Location = new System.Drawing.Point(202, 47);
+            this.label_pp_attaque_deux.Location = new System.Drawing.Point(1467, 651);
             this.label_pp_attaque_deux.Name = "label_pp_attaque_deux";
             this.label_pp_attaque_deux.Size = new System.Drawing.Size(21, 13);
             this.label_pp_attaque_deux.TabIndex = 54;
             this.label_pp_attaque_deux.Text = "PP";
             this.label_pp_attaque_deux.Visible = false;
+            this.label_pp_attaque_deux.Click += new System.EventHandler(this.label_pp_attaque_deux_Click);
             // 
             // label_pp_attaque_une
             // 
             this.label_pp_attaque_une.AutoSize = true;
-            this.label_pp_attaque_une.Location = new System.Drawing.Point(83, 47);
+            this.label_pp_attaque_une.Location = new System.Drawing.Point(1348, 646);
             this.label_pp_attaque_une.Name = "label_pp_attaque_une";
             this.label_pp_attaque_une.Size = new System.Drawing.Size(21, 13);
             this.label_pp_attaque_une.TabIndex = 53;
             this.label_pp_attaque_une.Text = "PP";
             this.label_pp_attaque_une.Visible = false;
+            this.label_pp_attaque_une.Click += new System.EventHandler(this.label_pp_attaque_une_Click);
             // 
             // btn_retour_choix_attaque
             // 
-            this.btn_retour_choix_attaque.Location = new System.Drawing.Point(73, 123);
+            this.btn_retour_choix_attaque.Location = new System.Drawing.Point(1266, 739);
             this.btn_retour_choix_attaque.Name = "btn_retour_choix_attaque";
-            this.btn_retour_choix_attaque.Size = new System.Drawing.Size(75, 23);
+            this.btn_retour_choix_attaque.Size = new System.Drawing.Size(231, 37);
             this.btn_retour_choix_attaque.TabIndex = 52;
             this.btn_retour_choix_attaque.Text = "Retour";
             this.btn_retour_choix_attaque.UseVisualStyleBackColor = true;
@@ -871,48 +884,58 @@
             // 
             // pictureBoxTypeAttaque4
             // 
-            this.pictureBoxTypeAttaque4.Location = new System.Drawing.Point(141, 95);
+            this.pictureBoxTypeAttaque4.Location = new System.Drawing.Point(1397, 698);
             this.pictureBoxTypeAttaque4.Name = "pictureBoxTypeAttaque4";
-            this.pictureBoxTypeAttaque4.Size = new System.Drawing.Size(55, 18);
+            this.pictureBoxTypeAttaque4.Size = new System.Drawing.Size(34, 18);
+            this.pictureBoxTypeAttaque4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxTypeAttaque4.TabIndex = 49;
             this.pictureBoxTypeAttaque4.TabStop = false;
             this.pictureBoxTypeAttaque4.Visible = false;
+            this.pictureBoxTypeAttaque4.Click += new System.EventHandler(this.pictureBoxTypeAttaque4_Click);
             // 
             // pictureBoxTypeAttaque3
             // 
-            this.pictureBoxTypeAttaque3.Location = new System.Drawing.Point(22, 95);
+            this.pictureBoxTypeAttaque3.Location = new System.Drawing.Point(1266, 698);
             this.pictureBoxTypeAttaque3.Name = "pictureBoxTypeAttaque3";
-            this.pictureBoxTypeAttaque3.Size = new System.Drawing.Size(55, 18);
+            this.pictureBoxTypeAttaque3.Size = new System.Drawing.Size(34, 18);
+            this.pictureBoxTypeAttaque3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxTypeAttaque3.TabIndex = 46;
             this.pictureBoxTypeAttaque3.TabStop = false;
             this.pictureBoxTypeAttaque3.Visible = false;
+            this.pictureBoxTypeAttaque3.Click += new System.EventHandler(this.pictureBoxTypeAttaque3_Click);
             // 
             // pictureBoxTypeAttaque2
             // 
-            this.pictureBoxTypeAttaque2.Location = new System.Drawing.Point(141, 42);
+            this.pictureBoxTypeAttaque2.Location = new System.Drawing.Point(1397, 634);
             this.pictureBoxTypeAttaque2.Name = "pictureBoxTypeAttaque2";
-            this.pictureBoxTypeAttaque2.Size = new System.Drawing.Size(55, 18);
+            this.pictureBoxTypeAttaque2.Size = new System.Drawing.Size(34, 18);
+            this.pictureBoxTypeAttaque2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxTypeAttaque2.TabIndex = 45;
             this.pictureBoxTypeAttaque2.TabStop = false;
             this.pictureBoxTypeAttaque2.Visible = false;
+            this.pictureBoxTypeAttaque2.Click += new System.EventHandler(this.pictureBoxTypeAttaque2_Click);
             // 
             // pictureBoxTypeAttaque1
             // 
-            this.pictureBoxTypeAttaque1.Location = new System.Drawing.Point(22, 42);
+            this.pictureBoxTypeAttaque1.Location = new System.Drawing.Point(1266, 634);
             this.pictureBoxTypeAttaque1.Name = "pictureBoxTypeAttaque1";
-            this.pictureBoxTypeAttaque1.Size = new System.Drawing.Size(55, 18);
+            this.pictureBoxTypeAttaque1.Size = new System.Drawing.Size(34, 18);
+            this.pictureBoxTypeAttaque1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxTypeAttaque1.TabIndex = 44;
             this.pictureBoxTypeAttaque1.TabStop = false;
             this.pictureBoxTypeAttaque1.Visible = false;
+            this.pictureBoxTypeAttaque1.Click += new System.EventHandler(this.pictureBoxTypeAttaque1_Click);
             // 
             // btn_attaque_une
             // 
-            this.btn_attaque_une.Location = new System.Drawing.Point(7, 13);
+            this.btn_attaque_une.BackColor = System.Drawing.Color.Transparent;
+            this.btn_attaque_une.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_attaque_une.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_attaque_une.Location = new System.Drawing.Point(1258, 607);
             this.btn_attaque_une.Name = "btn_attaque_une";
-            this.btn_attaque_une.Size = new System.Drawing.Size(85, 23);
+            this.btn_attaque_une.Size = new System.Drawing.Size(117, 53);
             this.btn_attaque_une.TabIndex = 40;
-            this.btn_attaque_une.Text = "Attaque 1";
-            this.btn_attaque_une.UseVisualStyleBackColor = true;
+            this.btn_attaque_une.UseVisualStyleBackColor = false;
             this.btn_attaque_une.Visible = false;
             this.btn_attaque_une.Click += new System.EventHandler(this.btn_attaque_une_Click);
             this.btn_attaque_une.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_attaque_une_KeyDown);
@@ -920,12 +943,13 @@
             // 
             // btn_attaque_deux
             // 
-            this.btn_attaque_deux.Location = new System.Drawing.Point(127, 13);
+            this.btn_attaque_deux.BackColor = System.Drawing.Color.Transparent;
+            this.btn_attaque_deux.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_attaque_deux.Location = new System.Drawing.Point(1387, 607);
             this.btn_attaque_deux.Name = "btn_attaque_deux";
-            this.btn_attaque_deux.Size = new System.Drawing.Size(85, 23);
+            this.btn_attaque_deux.Size = new System.Drawing.Size(117, 53);
             this.btn_attaque_deux.TabIndex = 41;
-            this.btn_attaque_deux.Text = "Attaque 2";
-            this.btn_attaque_deux.UseVisualStyleBackColor = true;
+            this.btn_attaque_deux.UseVisualStyleBackColor = false;
             this.btn_attaque_deux.Visible = false;
             this.btn_attaque_deux.Click += new System.EventHandler(this.btn_attaque_deux_Click);
             this.btn_attaque_deux.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_attaque_deux_KeyDown);
@@ -933,12 +957,13 @@
             // 
             // btn_attaque_trois
             // 
-            this.btn_attaque_trois.Location = new System.Drawing.Point(7, 66);
+            this.btn_attaque_trois.BackColor = System.Drawing.Color.Transparent;
+            this.btn_attaque_trois.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_attaque_trois.Location = new System.Drawing.Point(1258, 669);
             this.btn_attaque_trois.Name = "btn_attaque_trois";
-            this.btn_attaque_trois.Size = new System.Drawing.Size(85, 23);
+            this.btn_attaque_trois.Size = new System.Drawing.Size(117, 53);
             this.btn_attaque_trois.TabIndex = 42;
-            this.btn_attaque_trois.Text = "Attaque 3";
-            this.btn_attaque_trois.UseVisualStyleBackColor = true;
+            this.btn_attaque_trois.UseVisualStyleBackColor = false;
             this.btn_attaque_trois.Visible = false;
             this.btn_attaque_trois.Click += new System.EventHandler(this.btn_attaque_trois_Click);
             this.btn_attaque_trois.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_attaque_trois_KeyDown);
@@ -946,12 +971,13 @@
             // 
             // btn_attaque_quatre
             // 
-            this.btn_attaque_quatre.Location = new System.Drawing.Point(127, 66);
+            this.btn_attaque_quatre.BackColor = System.Drawing.Color.Transparent;
+            this.btn_attaque_quatre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_attaque_quatre.Location = new System.Drawing.Point(1387, 669);
             this.btn_attaque_quatre.Name = "btn_attaque_quatre";
-            this.btn_attaque_quatre.Size = new System.Drawing.Size(85, 23);
+            this.btn_attaque_quatre.Size = new System.Drawing.Size(117, 53);
             this.btn_attaque_quatre.TabIndex = 43;
-            this.btn_attaque_quatre.Text = "Attaque 4";
-            this.btn_attaque_quatre.UseVisualStyleBackColor = true;
+            this.btn_attaque_quatre.UseVisualStyleBackColor = false;
             this.btn_attaque_quatre.Visible = false;
             this.btn_attaque_quatre.Click += new System.EventHandler(this.btn_attaque_quatre_Click);
             this.btn_attaque_quatre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_attaque_quatre_KeyDown);
@@ -960,7 +986,7 @@
             // label_niveau_pokemon_combat_joueur
             // 
             this.label_niveau_pokemon_combat_joueur.AutoSize = true;
-            this.label_niveau_pokemon_combat_joueur.Location = new System.Drawing.Point(895, 629);
+            this.label_niveau_pokemon_combat_joueur.Location = new System.Drawing.Point(895, 677);
             this.label_niveau_pokemon_combat_joueur.Name = "label_niveau_pokemon_combat_joueur";
             this.label_niveau_pokemon_combat_joueur.Size = new System.Drawing.Size(41, 13);
             this.label_niveau_pokemon_combat_joueur.TabIndex = 49;
@@ -970,7 +996,7 @@
             // label_niveau_pokemon_combat_adversaire
             // 
             this.label_niveau_pokemon_combat_adversaire.AutoSize = true;
-            this.label_niveau_pokemon_combat_adversaire.Location = new System.Drawing.Point(1081, 277);
+            this.label_niveau_pokemon_combat_adversaire.Location = new System.Drawing.Point(1081, 255);
             this.label_niveau_pokemon_combat_adversaire.Name = "label_niveau_pokemon_combat_adversaire";
             this.label_niveau_pokemon_combat_adversaire.Size = new System.Drawing.Size(41, 13);
             this.label_niveau_pokemon_combat_adversaire.TabIndex = 50;
@@ -979,7 +1005,7 @@
             // 
             // pictureBoxBarreExperiencePokemonJoueur
             // 
-            this.pictureBoxBarreExperiencePokemonJoueur.Location = new System.Drawing.Point(851, 595);
+            this.pictureBoxBarreExperiencePokemonJoueur.Location = new System.Drawing.Point(851, 643);
             this.pictureBoxBarreExperiencePokemonJoueur.Name = "pictureBoxBarreExperiencePokemonJoueur";
             this.pictureBoxBarreExperiencePokemonJoueur.Size = new System.Drawing.Size(111, 21);
             this.pictureBoxBarreExperiencePokemonJoueur.TabIndex = 51;
@@ -999,7 +1025,7 @@
             this.groupBoxNiveauSuperieurStatistiques.Controls.Add(this.label_defense_changement_niveau);
             this.groupBoxNiveauSuperieurStatistiques.Controls.Add(this.label_attaque_changement_niveau);
             this.groupBoxNiveauSuperieurStatistiques.Controls.Add(this.label_pv_changement_niveau);
-            this.groupBoxNiveauSuperieurStatistiques.Location = new System.Drawing.Point(988, 586);
+            this.groupBoxNiveauSuperieurStatistiques.Location = new System.Drawing.Point(988, 634);
             this.groupBoxNiveauSuperieurStatistiques.Name = "groupBoxNiveauSuperieurStatistiques";
             this.groupBoxNiveauSuperieurStatistiques.Size = new System.Drawing.Size(124, 100);
             this.groupBoxNiveauSuperieurStatistiques.TabIndex = 52;
@@ -1062,7 +1088,7 @@
             // 
             // pictureBoxExemple
             // 
-            this.pictureBoxExemple.Location = new System.Drawing.Point(1013, 503);
+            this.pictureBoxExemple.Location = new System.Drawing.Point(1013, 551);
             this.pictureBoxExemple.Name = "pictureBoxExemple";
             this.pictureBoxExemple.Size = new System.Drawing.Size(100, 50);
             this.pictureBoxExemple.TabIndex = 53;
@@ -1076,7 +1102,7 @@
             // 
             this.label_sexe_pokemon_combat_joueur.AutoSize = true;
             this.label_sexe_pokemon_combat_joueur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_sexe_pokemon_combat_joueur.Location = new System.Drawing.Point(941, 625);
+            this.label_sexe_pokemon_combat_joueur.Location = new System.Drawing.Point(941, 673);
             this.label_sexe_pokemon_combat_joueur.Name = "label_sexe_pokemon_combat_joueur";
             this.label_sexe_pokemon_combat_joueur.Size = new System.Drawing.Size(45, 20);
             this.label_sexe_pokemon_combat_joueur.TabIndex = 54;
@@ -1087,7 +1113,7 @@
             // 
             this.label_sexe_pokemon_combat_adversaire.AutoSize = true;
             this.label_sexe_pokemon_combat_adversaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_sexe_pokemon_combat_adversaire.Location = new System.Drawing.Point(1128, 273);
+            this.label_sexe_pokemon_combat_adversaire.Location = new System.Drawing.Point(1128, 251);
             this.label_sexe_pokemon_combat_adversaire.Name = "label_sexe_pokemon_combat_adversaire";
             this.label_sexe_pokemon_combat_adversaire.Size = new System.Drawing.Size(45, 20);
             this.label_sexe_pokemon_combat_adversaire.TabIndex = 55;
@@ -1114,13 +1140,345 @@
             this.btn_choix_pokeball.Visible = false;
             this.btn_choix_pokeball.Click += new System.EventHandler(this.btn_choix_pokeball_Click);
             // 
+            // pictureBoxStatutPokemonCombatJoueur
+            // 
+            this.pictureBoxStatutPokemonCombatJoueur.Location = new System.Drawing.Point(833, 671);
+            this.pictureBoxStatutPokemonCombatJoueur.Name = "pictureBoxStatutPokemonCombatJoueur";
+            this.pictureBoxStatutPokemonCombatJoueur.Size = new System.Drawing.Size(49, 19);
+            this.pictureBoxStatutPokemonCombatJoueur.TabIndex = 58;
+            this.pictureBoxStatutPokemonCombatJoueur.TabStop = false;
+            this.pictureBoxStatutPokemonCombatJoueur.Visible = false;
+            // 
+            // pictureBoxStatutPokemonCombatAdversaire
+            // 
+            this.pictureBoxStatutPokemonCombatAdversaire.Location = new System.Drawing.Point(1013, 251);
+            this.pictureBoxStatutPokemonCombatAdversaire.Name = "pictureBoxStatutPokemonCombatAdversaire";
+            this.pictureBoxStatutPokemonCombatAdversaire.Size = new System.Drawing.Size(49, 19);
+            this.pictureBoxStatutPokemonCombatAdversaire.TabIndex = 59;
+            this.pictureBoxStatutPokemonCombatAdversaire.TabStop = false;
+            this.pictureBoxStatutPokemonCombatAdversaire.Visible = false;
+            // 
+            // pictureBoxBasePokemonAdversaire
+            // 
+            this.pictureBoxBasePokemonAdversaire.Location = new System.Drawing.Point(997, 293);
+            this.pictureBoxBasePokemonAdversaire.Name = "pictureBoxBasePokemonAdversaire";
+            this.pictureBoxBasePokemonAdversaire.Size = new System.Drawing.Size(141, 79);
+            this.pictureBoxBasePokemonAdversaire.TabIndex = 61;
+            this.pictureBoxBasePokemonAdversaire.TabStop = false;
+            // 
+            // btn_pokeball_premier_starter
+            // 
+            this.btn_pokeball_premier_starter.AutoSize = true;
+            this.btn_pokeball_premier_starter.BackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_premier_starter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_pokeball_premier_starter.FlatAppearance.BorderSize = 0;
+            this.btn_pokeball_premier_starter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_premier_starter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_premier_starter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pokeball_premier_starter.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_premier_starter.Image = ((System.Drawing.Image)(resources.GetObject("btn_pokeball_premier_starter.Image")));
+            this.btn_pokeball_premier_starter.Location = new System.Drawing.Point(86, 634);
+            this.btn_pokeball_premier_starter.Name = "btn_pokeball_premier_starter";
+            this.btn_pokeball_premier_starter.Size = new System.Drawing.Size(37, 30);
+            this.btn_pokeball_premier_starter.TabIndex = 62;
+            this.btn_pokeball_premier_starter.TabStop = false;
+            this.btn_pokeball_premier_starter.UseVisualStyleBackColor = false;
+            this.btn_pokeball_premier_starter.Visible = false;
+            this.btn_pokeball_premier_starter.Click += new System.EventHandler(this.btn_pokeball_premier_starter_Click);
+            this.btn_pokeball_premier_starter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_pokeball_premier_starter_KeyDown);
+            this.btn_pokeball_premier_starter.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_pokeball_premier_starter_PreviewKeyDown);
+            // 
+            // pictureBoxPokeballPremierStarter
+            // 
+            this.pictureBoxPokeballPremierStarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPokeballPremierStarter.Location = new System.Drawing.Point(74, 681);
+            this.pictureBoxPokeballPremierStarter.Name = "pictureBoxPokeballPremierStarter";
+            this.pictureBoxPokeballPremierStarter.Size = new System.Drawing.Size(56, 50);
+            this.pictureBoxPokeballPremierStarter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPokeballPremierStarter.TabIndex = 63;
+            this.pictureBoxPokeballPremierStarter.TabStop = false;
+            this.pictureBoxPokeballPremierStarter.Visible = false;
+            // 
+            // btn_pokeball_deuxieme_starter
+            // 
+            this.btn_pokeball_deuxieme_starter.AutoSize = true;
+            this.btn_pokeball_deuxieme_starter.BackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_deuxieme_starter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_pokeball_deuxieme_starter.FlatAppearance.BorderSize = 0;
+            this.btn_pokeball_deuxieme_starter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_deuxieme_starter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_deuxieme_starter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pokeball_deuxieme_starter.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_deuxieme_starter.Image = ((System.Drawing.Image)(resources.GetObject("btn_pokeball_deuxieme_starter.Image")));
+            this.btn_pokeball_deuxieme_starter.Location = new System.Drawing.Point(154, 634);
+            this.btn_pokeball_deuxieme_starter.Name = "btn_pokeball_deuxieme_starter";
+            this.btn_pokeball_deuxieme_starter.Size = new System.Drawing.Size(37, 30);
+            this.btn_pokeball_deuxieme_starter.TabIndex = 64;
+            this.btn_pokeball_deuxieme_starter.TabStop = false;
+            this.btn_pokeball_deuxieme_starter.UseVisualStyleBackColor = false;
+            this.btn_pokeball_deuxieme_starter.Visible = false;
+            this.btn_pokeball_deuxieme_starter.Click += new System.EventHandler(this.btn_pokeball_deuxieme_starter_Click);
+            this.btn_pokeball_deuxieme_starter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_pokeball_deuxieme_starter_KeyDown);
+            this.btn_pokeball_deuxieme_starter.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_pokeball_deuxieme_starter_PreviewKeyDown);
+            // 
+            // pictureBoxPokeballDeuxiemeStarter
+            // 
+            this.pictureBoxPokeballDeuxiemeStarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPokeballDeuxiemeStarter.Location = new System.Drawing.Point(144, 681);
+            this.pictureBoxPokeballDeuxiemeStarter.Name = "pictureBoxPokeballDeuxiemeStarter";
+            this.pictureBoxPokeballDeuxiemeStarter.Size = new System.Drawing.Size(56, 50);
+            this.pictureBoxPokeballDeuxiemeStarter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPokeballDeuxiemeStarter.TabIndex = 65;
+            this.pictureBoxPokeballDeuxiemeStarter.TabStop = false;
+            this.pictureBoxPokeballDeuxiemeStarter.Visible = false;
+            // 
+            // btn_pokeball_troisieme_starter
+            // 
+            this.btn_pokeball_troisieme_starter.AutoSize = true;
+            this.btn_pokeball_troisieme_starter.BackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_troisieme_starter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_pokeball_troisieme_starter.FlatAppearance.BorderSize = 0;
+            this.btn_pokeball_troisieme_starter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_troisieme_starter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_troisieme_starter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pokeball_troisieme_starter.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_pokeball_troisieme_starter.Image = ((System.Drawing.Image)(resources.GetObject("btn_pokeball_troisieme_starter.Image")));
+            this.btn_pokeball_troisieme_starter.Location = new System.Drawing.Point(222, 634);
+            this.btn_pokeball_troisieme_starter.Name = "btn_pokeball_troisieme_starter";
+            this.btn_pokeball_troisieme_starter.Size = new System.Drawing.Size(37, 30);
+            this.btn_pokeball_troisieme_starter.TabIndex = 66;
+            this.btn_pokeball_troisieme_starter.TabStop = false;
+            this.btn_pokeball_troisieme_starter.UseVisualStyleBackColor = false;
+            this.btn_pokeball_troisieme_starter.Visible = false;
+            this.btn_pokeball_troisieme_starter.Click += new System.EventHandler(this.btn_pokeball_troisieme_starter_Click);
+            this.btn_pokeball_troisieme_starter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_pokeball_troisieme_starter_KeyDown);
+            this.btn_pokeball_troisieme_starter.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_pokeball_troisieme_starter_PreviewKeyDown);
+            // 
+            // pictureBoxPokeballTroisiemeStarter
+            // 
+            this.pictureBoxPokeballTroisiemeStarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPokeballTroisiemeStarter.Location = new System.Drawing.Point(214, 681);
+            this.pictureBoxPokeballTroisiemeStarter.Name = "pictureBoxPokeballTroisiemeStarter";
+            this.pictureBoxPokeballTroisiemeStarter.Size = new System.Drawing.Size(56, 50);
+            this.pictureBoxPokeballTroisiemeStarter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPokeballTroisiemeStarter.TabIndex = 67;
+            this.pictureBoxPokeballTroisiemeStarter.TabStop = false;
+            this.pictureBoxPokeballTroisiemeStarter.Visible = false;
+            // 
+            // btn_choix_garçon2
+            // 
+            this.btn_choix_garçon2.BackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_garçon2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_choix_garçon2.BackgroundImage")));
+            this.btn_choix_garçon2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_choix_garçon2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_choix_garçon2.FlatAppearance.BorderSize = 0;
+            this.btn_choix_garçon2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_garçon2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_garçon2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_choix_garçon2.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_choix_garçon2.Location = new System.Drawing.Point(48, 256);
+            this.btn_choix_garçon2.Name = "btn_choix_garçon2";
+            this.btn_choix_garçon2.Size = new System.Drawing.Size(75, 134);
+            this.btn_choix_garçon2.TabIndex = 68;
+            this.btn_choix_garçon2.TabStop = false;
+            this.btn_choix_garçon2.UseVisualStyleBackColor = false;
+            this.btn_choix_garçon2.Visible = false;
+            this.btn_choix_garçon2.Click += new System.EventHandler(this.btn_choix_garçon_Click);
+            this.btn_choix_garçon2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_choix_garçon_KeyDown);
+            this.btn_choix_garçon2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_choix_garçon_PreviewKeyDown);
+            // 
+            // btn_choix_fille2
+            // 
+            this.btn_choix_fille2.BackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_fille2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_choix_fille2.BackgroundImage")));
+            this.btn_choix_fille2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_choix_fille2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_choix_fille2.FlatAppearance.BorderSize = 0;
+            this.btn_choix_fille2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_fille2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_choix_fille2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_choix_fille2.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_choix_fille2.Location = new System.Drawing.Point(151, 256);
+            this.btn_choix_fille2.Name = "btn_choix_fille2";
+            this.btn_choix_fille2.Size = new System.Drawing.Size(75, 134);
+            this.btn_choix_fille2.TabIndex = 72;
+            this.btn_choix_fille2.TabStop = false;
+            this.btn_choix_fille2.UseVisualStyleBackColor = false;
+            this.btn_choix_fille2.Visible = false;
+            this.btn_choix_fille2.Click += new System.EventHandler(this.btn_choix_fille_Click);
+            this.btn_choix_fille2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_choix_fille_KeyDown);
+            this.btn_choix_fille2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btn_choix_fille_PreviewKeyDown);
+            // 
+            // pictureBoxBasePokemonJoueur
+            // 
+            this.pictureBoxBasePokemonJoueur.Location = new System.Drawing.Point(837, 478);
+            this.pictureBoxBasePokemonJoueur.Name = "pictureBoxBasePokemonJoueur";
+            this.pictureBoxBasePokemonJoueur.Size = new System.Drawing.Size(141, 79);
+            this.pictureBoxBasePokemonJoueur.TabIndex = 73;
+            this.pictureBoxBasePokemonJoueur.TabStop = false;
+            // 
+            // pictureBoxMenuCombat
+            // 
+            this.pictureBoxMenuCombat.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxMenuCombat.Image")));
+            this.pictureBoxMenuCombat.Location = new System.Drawing.Point(1247, 595);
+            this.pictureBoxMenuCombat.Name = "pictureBoxMenuCombat";
+            this.pictureBoxMenuCombat.Size = new System.Drawing.Size(268, 184);
+            this.pictureBoxMenuCombat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxMenuCombat.TabIndex = 74;
+            this.pictureBoxMenuCombat.TabStop = false;
+            this.pictureBoxMenuCombat.Visible = false;
+            // 
+            // pictureBoxIconePokemon
+            // 
+            this.pictureBoxIconePokemon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxIconePokemon.Location = new System.Drawing.Point(1338, 643);
+            this.pictureBoxIconePokemon.Name = "pictureBoxIconePokemon";
+            this.pictureBoxIconePokemon.Size = new System.Drawing.Size(21, 22);
+            this.pictureBoxIconePokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxIconePokemon.TabIndex = 75;
+            this.pictureBoxIconePokemon.TabStop = false;
+            this.pictureBoxIconePokemon.Visible = false;
+            this.pictureBoxIconePokemon.Click += new System.EventHandler(this.pictureBoxIconePokemon_Click);
+            // 
+            // btn_pc
+            // 
+            this.btn_pc.Location = new System.Drawing.Point(1547, 82);
+            this.btn_pc.Name = "btn_pc";
+            this.btn_pc.Size = new System.Drawing.Size(75, 23);
+            this.btn_pc.TabIndex = 76;
+            this.btn_pc.Text = "PC";
+            this.btn_pc.UseVisualStyleBackColor = true;
+            this.btn_pc.Visible = false;
+            this.btn_pc.Click += new System.EventHandler(this.btn_pc_Click);
+            // 
+            // timerAnimationAdversaireKo
+            // 
+            this.timerAnimationAdversaireKo.Interval = 50;
+            this.timerAnimationAdversaireKo.Tick += new System.EventHandler(this.timerAnimationKo_Tick_1);
+            // 
+            // timerAnimationKo
+            // 
+            this.timerAnimationKo.Interval = 50;
+            this.timerAnimationKo.Tick += new System.EventHandler(this.timerAnimationKo_Tick);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ouvrirToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1646, 24);
+            this.menuStrip.TabIndex = 77;
+            this.menuStrip.Text = "1";
+            // 
+            // ouvrirToolStripMenuItem
+            // 
+            this.ouvrirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ouvrirToolStripMenuItem1,
+            this.enregistrerToolStripMenuItem});
+            this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.ouvrirToolStripMenuItem.Text = "Fichier";
+            // 
+            // ouvrirToolStripMenuItem1
+            // 
+            this.ouvrirToolStripMenuItem1.Enabled = false;
+            this.ouvrirToolStripMenuItem1.Name = "ouvrirToolStripMenuItem1";
+            this.ouvrirToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.ouvrirToolStripMenuItem1.Text = "Ouvrir";
+            this.ouvrirToolStripMenuItem1.Click += new System.EventHandler(this.ouvrirToolStripMenuItem1_Click);
+            // 
+            // enregistrerToolStripMenuItem
+            // 
+            this.enregistrerToolStripMenuItem.Enabled = false;
+            this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.enregistrerToolStripMenuItem.Text = "Enregistrer sous...";
+            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
+            // 
+            // label_nom_attaque_une
+            // 
+            this.label_nom_attaque_une.AutoSize = true;
+            this.label_nom_attaque_une.BackColor = System.Drawing.Color.Transparent;
+            this.label_nom_attaque_une.Location = new System.Drawing.Point(1289, 611);
+            this.label_nom_attaque_une.Name = "label_nom_attaque_une";
+            this.label_nom_attaque_une.Size = new System.Drawing.Size(53, 13);
+            this.label_nom_attaque_une.TabIndex = 78;
+            this.label_nom_attaque_une.Text = "Attaque 1";
+            this.label_nom_attaque_une.Visible = false;
+            this.label_nom_attaque_une.Click += new System.EventHandler(this.label_nom_attaque_une_Click);
+            // 
+            // label_nom_attaque_deux
+            // 
+            this.label_nom_attaque_deux.AutoSize = true;
+            this.label_nom_attaque_deux.BackColor = System.Drawing.Color.Transparent;
+            this.label_nom_attaque_deux.Location = new System.Drawing.Point(1418, 611);
+            this.label_nom_attaque_deux.Name = "label_nom_attaque_deux";
+            this.label_nom_attaque_deux.Size = new System.Drawing.Size(53, 13);
+            this.label_nom_attaque_deux.TabIndex = 79;
+            this.label_nom_attaque_deux.Text = "Attaque 2";
+            this.label_nom_attaque_deux.Visible = false;
+            this.label_nom_attaque_deux.Click += new System.EventHandler(this.label_nom_attaque_deux_Click);
+            // 
+            // label_nom_attaque_trois
+            // 
+            this.label_nom_attaque_trois.AutoSize = true;
+            this.label_nom_attaque_trois.BackColor = System.Drawing.Color.Transparent;
+            this.label_nom_attaque_trois.Location = new System.Drawing.Point(1289, 673);
+            this.label_nom_attaque_trois.Name = "label_nom_attaque_trois";
+            this.label_nom_attaque_trois.Size = new System.Drawing.Size(53, 13);
+            this.label_nom_attaque_trois.TabIndex = 80;
+            this.label_nom_attaque_trois.Text = "Attaque 3";
+            this.label_nom_attaque_trois.Visible = false;
+            this.label_nom_attaque_trois.Click += new System.EventHandler(this.label_nom_attaque_trois_Click);
+            // 
+            // label_nom_attaque_quatre
+            // 
+            this.label_nom_attaque_quatre.AutoSize = true;
+            this.label_nom_attaque_quatre.BackColor = System.Drawing.Color.Transparent;
+            this.label_nom_attaque_quatre.Location = new System.Drawing.Point(1416, 673);
+            this.label_nom_attaque_quatre.Name = "label_nom_attaque_quatre";
+            this.label_nom_attaque_quatre.Size = new System.Drawing.Size(53, 13);
+            this.label_nom_attaque_quatre.TabIndex = 81;
+            this.label_nom_attaque_quatre.Text = "Attaque 4";
+            this.label_nom_attaque_quatre.Visible = false;
+            this.label_nom_attaque_quatre.Click += new System.EventHandler(this.label_nom_attaque_quatre_Click);
+            // 
             // frmSaisiesBoutons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1646, 713);
+            this.ClientSize = new System.Drawing.Size(1646, 783);
+            this.Controls.Add(this.label_nom_attaque_quatre);
+            this.Controls.Add(this.label_nom_attaque_trois);
+            this.Controls.Add(this.label_nom_attaque_deux);
+            this.Controls.Add(this.label_nom_attaque_une);
+            this.Controls.Add(this.btn_pc);
+            this.Controls.Add(this.label_pp_attaque_une);
+            this.Controls.Add(this.pictureBoxTypeAttaque4);
+            this.Controls.Add(this.pictureBoxTypeAttaque2);
+            this.Controls.Add(this.pictureBoxTypeAttaque3);
+            this.Controls.Add(this.pictureBoxTypeAttaque1);
+            this.Controls.Add(this.btn_retour_choix_attaque);
+            this.Controls.Add(this.label_pp_attaque_quatre);
+            this.Controls.Add(this.btn_choix_fille2);
+            this.Controls.Add(this.label_pp_attaque_trois);
+            this.Controls.Add(this.btn_choix_garçon2);
+            this.Controls.Add(this.label_pp_attaque_deux);
+            this.Controls.Add(this.pictureBoxPokeballTroisiemeStarter);
+            this.Controls.Add(this.btn_pokeball_troisieme_starter);
+            this.Controls.Add(this.pictureBoxPokeballDeuxiemeStarter);
+            this.Controls.Add(this.btn_pokeball_deuxieme_starter);
+            this.Controls.Add(this.pictureBoxPokeballPremierStarter);
+            this.Controls.Add(this.btn_pokeball_premier_starter);
+            this.Controls.Add(this.pictureBoxStatutPokemonCombatAdversaire);
+            this.Controls.Add(this.btn_attaque_une);
+            this.Controls.Add(this.btn_attaque_deux);
+            this.Controls.Add(this.pictureBoxStatutPokemonCombatJoueur);
+            this.Controls.Add(this.btn_attaque_trois);
             this.Controls.Add(this.btn_choix_pokeball);
+            this.Controls.Add(this.btn_attaque_quatre);
             this.Controls.Add(this.cb_choix_pokeball);
             this.Controls.Add(this.label_sexe_pokemon_combat_adversaire);
             this.Controls.Add(this.label_sexe_pokemon_combat_joueur);
@@ -1131,10 +1489,8 @@
             this.Controls.Add(this.label_niveau_pokemon_combat_joueur);
             this.Controls.Add(this.panel_choix_objets_selection);
             this.Controls.Add(this.panel_choix_attaque_selection);
-            this.Controls.Add(this.btn_changement_pokemon);
             this.Controls.Add(this.pictureBoxBarreViePokemonAdversaire);
             this.Controls.Add(this.pictureBoxBarreViePokemonJoueur);
-            this.Controls.Add(this.btn_attaque1);
             this.Controls.Add(this.label_nom_pokemon_combat_adversaire);
             this.Controls.Add(this.label_pv_pokemon_combat_adversaire);
             this.Controls.Add(this.label_nom_pokemon_combat_joueur);
@@ -1145,11 +1501,17 @@
             this.Controls.Add(this.groupBoxPokemon);
             this.Controls.Add(this.groupBoxConnexion);
             this.Controls.Add(this.btn_attraper);
-            this.Controls.Add(this.bt_choixPokemon);
-            this.Controls.Add(this.cb_choix_pokemon_depart);
             this.Controls.Add(this.label_choix_pokemon_depart);
             this.Controls.Add(this.combat_btn);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pictureBoxBasePokemonAdversaire);
+            this.Controls.Add(this.pictureBoxBasePokemonJoueur);
+            this.Controls.Add(this.btn_changement_pokemon);
+            this.Controls.Add(this.pictureBoxIconePokemon);
+            this.Controls.Add(this.pictureBoxMenuCombat);
+            this.Controls.Add(this.btn_attaque1);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "frmSaisiesBoutons";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1173,8 +1535,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarreViePokemonAdversaire)).EndInit();
             this.panel_choix_objets_selection.ResumeLayout(false);
             this.panel_choix_objets_selection.PerformLayout();
-            this.panel_choix_attaque_selection.ResumeLayout(false);
-            this.panel_choix_attaque_selection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTypeAttaque2)).EndInit();
@@ -1183,6 +1543,17 @@
             this.groupBoxNiveauSuperieurStatistiques.ResumeLayout(false);
             this.groupBoxNiveauSuperieurStatistiques.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExemple)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStatutPokemonCombatJoueur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStatutPokemonCombatAdversaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasePokemonAdversaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballPremierStarter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballDeuxiemeStarter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokeballTroisiemeStarter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasePokemonJoueur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuCombat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconePokemon)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1192,8 +1563,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button combat_btn;
         private System.Windows.Forms.Label label_choix_pokemon_depart;
-        private System.Windows.Forms.ComboBox cb_choix_pokemon_depart;
-        private System.Windows.Forms.Button bt_choixPokemon;
         private System.Windows.Forms.Button btn_attraper;
         private System.Windows.Forms.Label Age;
         private System.Windows.Forms.Button buttonAfficher;
@@ -1280,6 +1649,31 @@
         private System.Windows.Forms.Label label_sexe_pokemon_combat_adversaire;
         private System.Windows.Forms.ComboBox cb_choix_pokeball;
         private System.Windows.Forms.Button btn_choix_pokeball;
+        private System.Windows.Forms.PictureBox pictureBoxStatutPokemonCombatJoueur;
+        private System.Windows.Forms.PictureBox pictureBoxStatutPokemonCombatAdversaire;
+        private System.Windows.Forms.PictureBox pictureBoxBasePokemonAdversaire;
+        private System.Windows.Forms.Button btn_pokeball_premier_starter;
+        private System.Windows.Forms.PictureBox pictureBoxPokeballPremierStarter;
+        private System.Windows.Forms.Button btn_pokeball_deuxieme_starter;
+        private System.Windows.Forms.PictureBox pictureBoxPokeballDeuxiemeStarter;
+        private System.Windows.Forms.Button btn_pokeball_troisieme_starter;
+        private System.Windows.Forms.PictureBox pictureBoxPokeballTroisiemeStarter;
+        private System.Windows.Forms.Button btn_choix_garçon2;
+        private System.Windows.Forms.Button btn_choix_fille2;
+        private System.Windows.Forms.PictureBox pictureBoxBasePokemonJoueur;
+        private System.Windows.Forms.PictureBox pictureBoxMenuCombat;
+        private System.Windows.Forms.PictureBox pictureBoxIconePokemon;
+        private System.Windows.Forms.Button btn_pc;
+        private System.Windows.Forms.Timer timerAnimationAdversaireKo;
+        private System.Windows.Forms.Timer timerAnimationKo;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
+        private System.Windows.Forms.Label label_nom_attaque_une;
+        private System.Windows.Forms.Label label_nom_attaque_deux;
+        private System.Windows.Forms.Label label_nom_attaque_trois;
+        private System.Windows.Forms.Label label_nom_attaque_quatre;
     }
 }
 

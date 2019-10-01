@@ -14,6 +14,7 @@ namespace WindowsFormsApp3
     {
         ClassLibrary2.Pokemon pokemon = new ClassLibrary2.Pokemon();
         frmSaisiesBoutons fenetre1;
+        Form3 fenetrePC;
 
         public void pokemonSelectionner(ClassLibrary2.Pokemon PokemonSelectionner)
         {
@@ -27,6 +28,12 @@ namespace WindowsFormsApp3
             fenetre1 = fenetre;
         }
 
+        public Form2(Form3 fenetre)
+        {
+            InitializeComponent();
+
+            fenetrePC = fenetre;
+        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -50,7 +57,15 @@ namespace WindowsFormsApp3
             }
 
             label_pv.Text = " / " + pokemon.getPv().ToString();
-            label_pv_restant.Text = pokemon.getPvRestant().ToString();
+
+            if (pokemon.getPvRestant() > 0)
+            {
+                label_pv_restant.Text = pokemon.getPvRestant().ToString();
+            }
+            else
+            {
+                label_pv_restant.Text = "K.O.";
+            }
             label_attaque.Text = "Attaque : " + pokemon.getStatistiquesAttaque().ToString();
             label_defense.Text = "Defense : " + pokemon.getStatistiquesDefense().ToString();
             label_vitesse.Text = "Vitesse : " + pokemon.getStatistiquesVitesse().ToString();
@@ -151,15 +166,20 @@ namespace WindowsFormsApp3
 
         private void btn_retour_changement_pokemon_Click(object sender, EventArgs e)
         {
-            fenetre1.Enabled = true;
-            this.Close();
-          
-          
+
+            this.Close();                  
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fenetre1.Enabled = true;
+            if (fenetre1 != null)
+            {
+                fenetre1.Enabled = true;
+            }
+            else if (fenetrePC != null)
+            {
+                fenetrePC.Enabled = true;
+            }
         }
     }
 }
